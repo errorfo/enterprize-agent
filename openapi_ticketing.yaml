@@ -1,0 +1,68 @@
+ openapi: 3.0.3
+ info:
+ title: Mock Ticketing API
+ version: "1.0.0"
+ description: Simple mock ticketing service used by the Visual Inventory & QA 
+Agent demo.
+ servers:- url: http://127.0.0.1:9000
+ paths:
+ /create_ticket:
+ post:
+ summary: Create a new ticket
+ operationId: createTicket
+ requestBody:
+ required: true
+ content:
+ application/json:
+ schema:
+ type: object
+ properties:
+ title:
+ type: string
+ description:
+ type: string
+ priority:
+ type: string
+ enum: [low, medium, high]
+ required:- title- description
+ responses:
+ "201":
+ description: Ticket created
+ content:
+ application/json:
+ schema:
+ type: object
+ properties:
+ id:
+ type: integer
+ title:
+ 14
+type: string
+ description:
+ type: string
+ priority:
+ type: string
+ /tickets:
+ get:
+ summary: List created tickets
+ operationId: listTickets
+ responses:
+ "200":
+ description: A JSON array of tickets
+ content:
+ application/json:
+ schema:
+ type: array
+ items:
+ type: object
+ properties:
+ id:
+ type: integer
+ title:
+ type: string
+ description:
+ type: string
+ priority:
+ type: string
+
+
